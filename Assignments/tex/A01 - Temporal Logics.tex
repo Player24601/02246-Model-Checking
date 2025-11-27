@@ -1,0 +1,446 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{anysize}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{latexsym}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{fancyheadings}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{enumitem}
+
+\marginsize{2cm}{2cm}{2cm}{1cm}
+
+\newcommand{\prismcomment}[1]{\mbox{\em #1}}
+\newcommand{\prismkeyword}[1]{\mathtt{#1}}
+\newcommand{\prismident}[1]{\mathit{#1}}
+\newcommand{\prismtab}{\hspace*{0.5cm}}
+
+\newcommand{\Pconst}[2]{\prismkeyword{const}\ #1\ \Pname{#2}}
+\newcommand{\Pglobal}{\prismkeyword{global}}
+\newcommand{\Plabel}{\prismkeyword{label}}
+\newcommand{\Pint}{\prismkeyword{int}}
+\newcommand{\Pbool}{\prismkeyword{bool}}
+\newcommand{\Pdouble}{\prismkeyword{double}}
+\newcommand{\Ptrue}{\prismkeyword{true}}
+\newcommand{\Pfalse}{\prismkeyword{false}}
+\newcommand{\Pmodule}[2]{\prismkeyword{module}\ \Pname{#1}[#2]}
+\newcommand{\Pendmodule}{\prismkeyword{endmodule}}
+
+\newcommand{\Pinit}[1]{\prismkeyword{init}\ #1}
+
+\newcommand{\Pend}{\ \mathtt{;}}
+\newcommand{\Parrow}{\rightarrow}
+\newcommand{\Pand}{\land}
+\newcommand{\Por}{\lor}
+\newcommand{\Pnot}{\lnot}
+
+\newcommand{\Passign}[2]{(\Pname{#1}' = #2)}
+\newcommand{\PassignA}[2]{(#1' = #2)}
+\newcommand{\PAassign}[3]{(\Pname{#1}[#2]' = #3)}
+
+\newcommand{\Pname}[1]{\prismident{#1}}
+\newcommand{\Paction}[1]{[#1]\ }
+\newcommand{\Pstate}[1]{\mathtt{#1}}
+
+\newcommand{\Pcomment}[1]{{\small\color{OliveGreen} //\ \mbox{\bf\it #1}}}
+
+\title{02246 Mandatory Assignment\\
+A01 - Temporal Logics\footnote{Thanks to Michael Smith (original author), and Lijun Zhang, Kebin Zeng and Flemming Nielson and Alberto Lluch Lafuente (contributors)}}
+\date{To be submitted on DTU Learn - see deadline on DTU Learn}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+%This assignment is concerned with Part I of the course~--- discrete modelling and verification. The problems are divided
+%into several parts.
+%\par
+You are encouraged to work in groups, 
+but you must clearly identify the contributions of each group member, and you will be jointly responsible for the finished report. Register your group on DTU Learn before submitting as group submission. 
+\par
+Answers to all parts should be typed up using LaTeX and submitted electronically as a PDF report using the provided template. Drawings and formulae may be handwritten
+and scanned. More detailed instructions as to the style of answer we expect for each part are included below.
+\par
+Some tasks require to upload files. %Please do so in the GitLab repository provided by the teachers.
+
+
+\clearpage
+
+\section*{A01 - Temporal Logics}
+
+\newif\ifwithanswers
+\withanswerstrue
+%\withanswersfalse
+
+
+\subsection*{A01P: Practical Problems}
+\begin{description}
+\item{\bf A01P.1} For the FCFS scheduler provided (file \texttt{FCFS.nm}), we would like to verify that whenever a client has an active job, the scheduler has that job somewhere in
+its queue. For example, in the case of the first client, we require that whenever $\Pname{state}_1 = 1$, then either $\Pname{job}_1 = 1$
+or $\Pname{job}_2 = 1$.
+\begin{enumerate}[label=\alph*)]
+\item Express this as two CTL properties~--- one for each client.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\color{red} \par UPLOAD REQUIRED: a prism property file \texttt{A01P.1.a.props}.\color{black}
+\item Use PRISM to verify whether these properties hold in the FCFS scheduler model. Provide a screenshot showing that this is the case.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item Write down two similar properties for the SRT scheduler provided (file \texttt{SRT.nm}), explaining your construction.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+\color{red} \par UPLOAD REQUIRED: a prism property file  \texttt{A01P.1.c.props}.\color{black}
+%
+\item Verify whether they hold in the model. Provide a screenshot showing the result.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\end{enumerate}
+\item{\bf A01P.2} Add another client to the PRISM model of the FCFS scheduler. You will need to modify the $\Pname{Scheduler}$ module to cope
+with the extra client, but for now do not increase the length of the queue. 
+
+\color{red} \par UPLOAD REQUIRED: a prism model file  \texttt{A01P.2.prism}. \color{black}
+
+\begin{enumerate}[label=\alph*)]
+\item Explain the changes that you made to the model, and argue why they satisfy the above instructions.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item How many reachable states are in the new model?
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item What will happen if the queue is full when a client attempts to create a job?
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item Do the properties you have previously verified still hold in the model? If not, why not? Provide a screenshot showing the results.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\end{enumerate}
+\item{\bf A01P.3} Now additionally modify the $\Pname{Scheduler}$ module so that the queue is of length three.
+
+\color{red} \par UPLOAD REQUIRED: a prism model file \texttt{A01P.3.prism}.\color{black}
+
+\begin{enumerate}[label=\alph*)]
+\item Explain the changes that you made to the model, and argue why they are correct.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item How many reachable states are in the new model?
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item Do the properties now hold in the model? If not, why not? Provide a screenshot showing the results.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+\end{enumerate}
+
+\end{description}
+
+\clearpage
+
+\subsection*{A01T: Theoretical Problems}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=.25\textwidth]{figures/kripke.pdf}
+\end{center}
+\caption{A transition system}
+\label{fig:kripke}
+\end{figure}
+\begin{description}
+\item{\bf A01T.1} Consider the transition system, shown graphically in Figure~\ref{fig:kripke}. The states are represented by circles, whose names are
+shown beneath them, and whose labels are shown inside them. The initial state is $s_0$. Determine whether the following properties hold
+in state $s_0$. You can encode the transition system in Figure~\ref{fig:kripke} as a PRISM module, and you can use PRISM to check if your answers are correct but you have to explain why they hold or do not hold using the formal semantics of temporal logics. 
+\begin{enumerate}[label=\alph*)]
+\item $AX\ \Phi_2$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $AF\ \Phi_2$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $EF\ \Phi_1$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $F\ \Phi_1$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $A[\Phi_1\ U\ \Phi_2]$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $G ( \neg \Phi_1 \rightarrow F \Phi_2)$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $G ( \neg \Phi_1 \rightarrow EF \Phi_2)$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\end{enumerate}
+
+\clearpage
+\item{\bf A01T.2} For each of the following pairs of CTL formulae, determine whether (a) they are equivalent, (b) one implies the other,
+or (c) neither implies the other. Explain your reasoning. 
+
+HINT: If one formula does not imply another one, you should be able to find a transition system witnessing this. Try to make it as as small as possible. Otherwise, you will have to refer to the formal semantics to support your answer. 
+
+\begin{enumerate}[label=\alph*)]
+\item $EX\ EF\ \Phi$ and $EF\ EX\ \Phi$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $AX\ AF\ \Phi$ and $AF\ AX\ \Phi$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $AG\ EF\ \Phi$ and $EF\ AG\ \Phi$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $AG\ (\Phi_1 \land \Phi_2)$ and $(AG\ \Phi_1) \land (AG\ \Phi_2)$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $EF\ (\Phi_1 \land \Phi_2)$ and $(EF\ \Phi_1) \land (EF\ \Phi_2)$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+
+\end{enumerate}
+
+
+\item{\bf A01T.3} For each of the following LTL formulae, find a small-as-possible transition system that satisfies it.
+
+\begin{enumerate}[label=\alph*)]
+%
+\item $X F p$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $\neg F X p$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $(X F p) \wedge (\neg F X p) $.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $G F p$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $\neg F G p$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item $(G F p) \wedge (\neg F G p)$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+
+\end{enumerate}
+
+\item{\bf A02T.4} Write down a CTL* formula for each of the following properties, which are described in natural language. Try to exploit the features of CTL* as much as possible (i.e. try to avoid inserting quantifiers before each temporal operator as in CTL). In each case,
+argue whether or not the property can also be expressed in CTL.
+\begin{enumerate}[label=\alph*)]
+\item There is a path on which $\Phi$ holds infinitely often.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item For all paths, $\Phi_1$ holds along the path until $\Phi_2$ holds in some state $s$ and $\Phi_3$ holds in the state that immediately follows $s$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item There is a path on which either $\Phi_1$ eventually holds or $\Phi_2$ eventually holds.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item For all paths, either $\Phi_1$ always holds or $\Phi_2$ always holds.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\end{enumerate}
+
+
+\end{description}
+
+
+\end{document}

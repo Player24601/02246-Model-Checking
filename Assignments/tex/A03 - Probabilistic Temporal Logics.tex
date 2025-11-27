@@ -1,0 +1,300 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{anysize}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{latexsym}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{fancyheadings}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\marginsize{2cm}{2cm}{2cm}{1cm}
+
+\newcommand{\prismcomment}[1]{\mbox{\em #1}}
+\newcommand{\prismkeyword}[1]{\mathtt{#1}}
+\newcommand{\prismident}[1]{\mathit{#1}}
+\newcommand{\prismtab}{\hspace*{0.5cm}}
+
+\newcommand{\Pconst}[2]{\prismkeyword{const}\ #1\ \Pname{#2}}
+\newcommand{\Pglobal}{\prismkeyword{global}}
+\newcommand{\Plabel}{\prismkeyword{label}}
+\newcommand{\Pint}{\prismkeyword{int}}
+\newcommand{\Pbool}{\prismkeyword{bool}}
+\newcommand{\Pdouble}{\prismkeyword{double}}
+\newcommand{\Ptrue}{\prismkeyword{true}}
+\newcommand{\Pfalse}{\prismkeyword{false}}
+\newcommand{\Pmodule}[2]{\prismkeyword{module}\ \Pname{#1}[#2]}
+\newcommand{\Pendmodule}{\prismkeyword{endmodule}}
+
+\newcommand{\Pinit}[1]{\prismkeyword{init}\ #1}
+
+\newcommand{\Pend}{\ \mathtt{;}}
+\newcommand{\Parrow}{\rightarrow}
+\newcommand{\Pand}{\land}
+\newcommand{\Por}{\lor}
+\newcommand{\Pnot}{\lnot}
+
+\newcommand{\Passign}[2]{(\Pname{#1}' = #2)}
+\newcommand{\PassignA}[2]{(#1' = #2)}
+\newcommand{\PAassign}[3]{(\Pname{#1}[#2]' = #3)}
+
+\newcommand{\Pname}[1]{\prismident{#1}}
+\newcommand{\Paction}[1]{[#1]\ }
+\newcommand{\Pstate}[1]{\mathtt{#1}}
+
+\newcommand{\Pcomment}[1]{{\small\color{OliveGreen} //\ \mbox{\bf\it #1}}}
+
+\title{02246 Mandatory Assignment\\
+Assignment 03 - Probabilistic Temporal Logics\footnote{Thanks to Michael Smith (the original author), and Lijun Zhang, Kebin Zeng, Flemming Nielson, Alberto Lluch Lafuente and Andrea Vandin (contributors).}}
+%\author{Alberto Lluch Lafuente, Andrea Vandin}
+\date{To be submitted on DTU Learn - see deadline on DTU Learn}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+You are encouraged to work in groups, 
+but you must clearly identify the contributions of each group member, and you will be jointly responsible for the finished report. Register your group on DTU Learn before submitting as group submission. 
+\par
+Answers to all parts should be typed up using LaTeX and submitted electronically as a PDF report using the provided template. Drawings and formulae may be handwritten
+and scanned. More detailed instructions as to the style of answer we expect for each part are included below.
+\par
+Some tasks require to upload files. %Please do so in the GitLab repository provided by the teachers.
+
+
+\newif\ifwithanswers
+\withanswerstrue
+%\withanswersfalse
+
+
+\pagebreak
+
+\section*{A03 - Probabilistic Temporal Logics}
+
+\subsection*{A03P: Practical Problems}
+\begin{description}
+\item{\bf A03P.1} In this problem, we will add probabilities to the FCFS scheduler from the previous assignment (the first version provided to you, without the extensions done in previous assignments), so that we construct a
+discrete time Markov chain.
+\begin{enumerate}[label=\alph*)]
+\item Identify all the sources of non-determinism in the model, and explain whether they are due to local non-determinism
+between the commands in a module, or due to the concurrent execution of two or more modules.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item Resolve the local non-deterministic choices by modifying the modules to include probabilistic commands. Recall that the
+syntax of this, in PRISM, is as follows:
+\begin{equation*}
+\Paction{\langle \mathit{ACTION} \rangle}\ \langle \mathit{GUARD} \rangle\ \Parrow\ p_1 : \langle \mathit{UPDATE}_1 \rangle + \cdots
++ p_n : \langle \mathit{UPDATE}_n \rangle \Pend
+\end{equation*}
+where $\sum_{i=1}^n p_i = 1$. For now, you should use a \emph{uniform distribution} (i.e.\ one where all the probabilities are the same)
+for each probabilistic command.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item Change the first line of the PRISM file from `{\tt mdp}' to `{\tt dtmc}', and save the model in a new file. This tells PRISM that the model describes a DTMC. Build the model in PRISM, and check that there are no error messages.
+How many states does your model have? Provide a screenshot.
+\color{red} \par UPLOAD REQUIRED: the new prism model \texttt{A03P1.c.prism}.\color{black}
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item The model you have constructed is purely probabilistic. What has happened to the non-determinism that we had due to the
+concurrent execution of the modules?
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item Use PRISM to verify that the following PCTL formula, which 
+aims at expressing that started jobs are almost surely completed in the future:
+\begin{equation*}
+(\Pname{task}_1 > 0) \Rightarrow \mathbb{P}_{\ge 1}(F(\Pname{task}_1=0))
+\end{equation*}
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\end{enumerate}
+\item{\bf A03P.2} This question is about using PRISM to compute numerical properties of your model.
+\begin{enumerate}[label=\alph*)]
+\item Calculate the transient distribution of the model at time $t = 10$. What is the probability that $\Pname{Client}_1$ does
+not currently have a job at this time?
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item Plot a graph of the probability that $\Pname{Client}_1$ does not have a job, against time $t$, for $0 \le t \le 10$. Can you given an intuitive explanation of your graph?
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item What is the probability that there are no jobs in the queue of the
+scheduler in the steady state distribution?
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+%\item By looking at the steady state probabilities, calculate the expected length of a job for $\Pname{Client}_1$.
+%%
+%\ifwithanswers
+%\color{blue}
+%\par
+%Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+%\color{black}
+%\fi
+%
+
+HINT: PRISM offers several functionalities to solve the above tasks. Some of them can be solved through GUI/command-line or using the PRISM Specification Language (see e.g. \url{https://www.prismmodelchecker.org/manual/PropertySpecification/Introduction}).
+
+\end{enumerate}
+\item{\bf A03P.3} This question is about PCTL model checking in PRISM. For each of the following, write down a PCTL formula
+that captures the query, and use PRISM to determine whether the \emph{initial state} of the model satisfies it (provide screenshots):
+\color{black}
+
+\begin{enumerate}[label=\alph*)]
+\item Is the probability greater than $0.2$ that $\Pname{Client}_1$ will have have an active
+job of length greater than $2$ in the next time unit?
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+\color{red} \par UPLOAD REQUIRED: a prism property file \texttt{A03P2.3.a.props}.\color{black}
+%
+\item Is the probability less than $0.5$ that $\Pname{Client}_2$ will create a job of length $5$ within $10$ time units?
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+\color{red} \par UPLOAD REQUIRED: a prism property file \texttt{A03P2.3.b.props}.\color{black}
+%
+\item Is the probability greater than zero that $\Pname{Client}_1$ will always have an active job?
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+\color{red} \par UPLOAD REQUIRED: a prism property file \texttt{A03P2.3.c.props}.\color{black}
+%
+\item For each of the above properties, use the `{\tt P=?}' notation in PRISM, to calculate the actual probability of the path
+formula holding.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+\color{red} \par UPLOAD REQUIRED: a prism property file \texttt{A03P2.3.d.props}.\color{black}
+%
+\end{enumerate}
+
+\end{description}
+
+\clearpage
+
+\subsection*{A03T: Theoretical Problems}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=.25\textwidth]{figures/dtmc.pdf}
+\end{center}
+\caption{A DTMC}
+\label{fig:dtmc}
+\end{figure}
+\begin{description}
+\item{\bf A03T.1} Consider the DTMC in Figure~\ref{fig:dtmc}, which is shown
+  graphically. The initial state is $s_0$. 
+  %Because this question is just concerned with numerical properties of the DTMC, we haven't labelled the states with atomic propositions.
+\begin{enumerate}[label=\alph*)]
+\item Write down the probability transition matrix corresponding to the DTMC, and its initial distribution as a row vector.
+The state $s_i$ should correspond to the index $i+1$.
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item Compute the transient distribution $\Theta_3$ of the DTMC after 3 time steps. {\it Hint: you may want to start by computing
+$\Theta_1$ and then $\Theta_2$.}
+\item Write down the matrix equation whose fixed point is the steady state solution of the DTMC. Solve this equation system with your favourite method/tool (excluding PRISM). 
+\end{enumerate}
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item{\bf A03T.2} Encode the DTMC in Figure~\ref{fig:dtmc} as a PRISM module, using a variable $s$ to represent the state, such that $0 \le s \le 3$.
+Use PRISM to compute the steady state distribution, and check that it
+agrees with your answer to question 1(c).
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+\item{\bf A03T.3} For each state $s_i$, calculate the probability probability of reaching $s_2$ while avoiding $s_3$. Explain your solution in terms of the formal semantics based on cylinder sets and double-check your solution against PRISM. 
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+
+\end{description}
+
+
+\end{document}

@@ -1,0 +1,117 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{anysize}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{latexsym}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{fancyheadings}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{url}
+
+\marginsize{2cm}{2cm}{2cm}{1cm}
+
+\include{prism}
+
+\title{02246 Mandatory Assignment\\
+Assignment 05 - Research Project \footnote{Thanks to Michael Smith (the original author), and Lijun Zhang, Kebin Zeng, Flemming Nielson, Alberto Lluch Lafuente and Andrea Vandin (contributors).}}
+%\author{Alberto Lluch Lafuente, Andrea Vandin}
+\date{To be submitted on DTU Learn - see deadline on DTU Learn}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+You are encouraged to work in groups, 
+but you must clearly identify the contributions of each group member, and you will be jointly responsible for the finished report. Register your group on DTU Learn before submitting as group submission. 
+\par
+Answers to all parts should be typed up using LaTeX and submitted electronically as a PDF report using the provided template. Drawings and formulae may be handwritten
+and scanned. More detailed instructions as to the style of answer we expect for each part are included below.
+\par
+Some tasks require to upload files. %Please do so in the GitLab repository provided by the teachers.
+
+
+\newif\ifwithanswers
+\withanswerstrue
+%\withanswersfalse
+
+
+\pagebreak
+
+\section*{Assignment 05 - Research project}
+
+In this assignment you will model and analyze a system of your choice.  
+
+\subsection*{A05: Requirements}
+
+\begin{itemize}
+
+\item You will have to use PRISM. If you wish to use a different model checker you will have to agree with the teachers.
+
+\item The model does not need to be very large but it must be somewhat original. Needless to say, you cannot use directly one of the models from the lectures, the assignment or any other existing model. You are of course welcome to get inspired by an existing model and to create a new model that includes substantial differences.  We recommend that you have a look at the PRISM pages with benchmarks and case studies:
+\begin{itemize}
+\item \url{https://www.prismmodelchecker.org/casestudies/}
+\item \url{https://www.prismmodelchecker.org/benchmarks/}
+\end{itemize}
+
+\item The general idea of the system to model has to be agreed with the teachers.
+
+\item The model should contain a representative set of modelling features from the course (e.g. modules, interactions, probabilities, etc.). The rationale is that you can show that you are able to use them. Of course, only do so if it makes sense for the system under study.
+
+\end{itemize}
+%
+
+\subsection*{A05: Tasks}
+
+\begin{enumerate}
+
+\item Write a short summary of the system under study in one paragraph. If you got inspired by some existing model, please refer to it. 
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item Provide the PRISM specification of your model. Please ensure that your code has comments explaining the model in detail. 
+\color{red} \par UPLOAD REQUIRED: the prism model file \texttt{A05.prism}.
+\color{black}
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item Explain how your PRISM specification models the system under study. You do not need to explain all details here, focus on key aspect of your model and use selected code snippets. 
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+%
+\item Design at least three different properties. For each property, explain the property in words and formalize it in the PRISM modelling language. Show a screenshot of the results (experiments or verification) and explain what they mean for the system under study. Provide also the properties as a file in the submission.
+\color{red} \par UPLOAD REQUIRED: the prism property file \texttt{A05.prism}.
+\color{black}
+%
+\ifwithanswers
+\color{blue}
+\par
+Provide your answer here. Leave the special color (blue). Figures, tables, code snippets can be placed somewhere else but they need to be referred here.
+\color{black}
+\fi
+\item Prepare a short 5-minutes presentation covering the above aspects. 
+%
+
+\end{enumerate}
+
+\end{document}
